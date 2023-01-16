@@ -24,6 +24,7 @@ namespace AddressBook_LINQ
             table.Rows.Add("Shubham", "Singh", "Vanaras", "City", "UttarPradesh", 222129, 9876543210, "shubham@gmail.com");
             table.Rows.Add("Karan", "Kushwaha", "Gorakhpur", "Lucknow", "Uttar Pradesh", 675432, 8765432190, "karan@gmail.com");
             table.Rows.Add("Irbaz", "Patel", "Bharuch", "Anywhere", "Gujrat", 654328, 6543210987, "irbaz@gmail.com");
+            table.Rows.Add("Niraj", "Pal", "lucknow", "Kanpur", "Delhi", 654354, 6543765098, "np@gmail.com");
         }
         public void DisplayContacts()
         {
@@ -46,6 +47,13 @@ namespace AddressBook_LINQ
             DataRow contact = table.Select("FirstName = '" + firstName + "' and LastName = '" + lastName + "'").FirstOrDefault();
             contact[column] = newValue;
             Console.WriteLine("Record successfully Edited");
+            DisplayContacts();
+        }
+        public void DeleteContact(string firstName, string lastName)
+        {
+            DataRow contact = table.Select("FirstName = '" + firstName + "' and LastName = '" + lastName + "'").FirstOrDefault();
+            table.Rows.Remove(contact);   
+            Console.WriteLine("\nRecord Successfully Deleted");
             DisplayContacts();
         }
     }

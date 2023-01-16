@@ -9,6 +9,7 @@
             addressBookManagment.InsertContactToTable();
             addressBookManagment.DisplayContacts();
             addressBookManagment.EditExistingContact("Karan","Kushwaha", "City", "Agra");
+            addressBookManagment.DeleteContact("Irbaz", "Patel");
         }
     }
 }
