@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,13 @@ namespace AddressBook_LINQ
                 Console.WriteLine("Email :" + row["Email"]);
                 Console.WriteLine("-------------\n");
             }
+        }
+        public void EditExistingContact(string firstName, string lastName, string column, string newValue)
+        {                                                               //Returns the first element of a sequence, or a default value if the sequence contains no elements. 
+            DataRow contact = table.Select("FirstName = '" + firstName + "' and LastName = '" + lastName + "'").FirstOrDefault();
+            contact[column] = newValue;
+            Console.WriteLine("Record successfully Edited");
+            DisplayContacts();
         }
     }
 }
