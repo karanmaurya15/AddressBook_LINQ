@@ -7,6 +7,7 @@
             Console.WriteLine("Welcome to the Address Book System Using LINQ");
             AddressBookManagment addressBookManagment = new AddressBookManagment();
             addressBookManagment.InsertContactToTable();
+            addressBookManagment.DisplayContacts();
         }
     }
 }
