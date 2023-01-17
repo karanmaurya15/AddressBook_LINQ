@@ -8,10 +8,11 @@
             AddressBookManagment addressBookManagment = new AddressBookManagment();
             addressBookManagment.InsertContactToTable();
             addressBookManagment.DisplayContacts();
-            addressBookManagment.EditExistingContact("Karan","Kushwaha", "City", "Agra");
+            addressBookManagment.EditExistingContact("Karan","Kushwaha", "City", "Lucknow");
             addressBookManagment.DeleteContact("Irbaz", "Patel");
-            addressBookManagment.RetrieveByCity("City");
+            addressBookManagment.RetrieveByCity("Kanpur");
             addressBookManagment.RetrieveByState("UttarPradesh");
+            addressBookManagment.SortedContactsByNameForAgivenCity("Lucknow");
         }
     }
 }

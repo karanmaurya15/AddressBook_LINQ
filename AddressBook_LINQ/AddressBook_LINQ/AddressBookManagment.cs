@@ -21,10 +21,10 @@ namespace AddressBook_LINQ
             table.Columns.Add("Zip", typeof(int));
             table.Columns.Add("PhoneNumber", typeof(long));
             table.Columns.Add("Email", typeof(string));
-            table.Rows.Add("Shubham", "Singh", "Vanaras", "City", "UttarPradesh", 222129, 9876543210, "shubham@gmail.com");
-            table.Rows.Add("Karan", "Kushwaha", "Gorakhpur", "Lucknow", "UttarPradesh", 675432, 8765432190, "karan@gmail.com");
+            table.Rows.Add("Shubham", "Singh", "Vanaras", "Lucknow", "UttarPradesh", 222129, 9876543210, "shubham@gmail.com");
+            table.Rows.Add("Karan", "Kushwaha", "Gorakhpur", "City", "UttarPradesh", 675432, 8765432190, "karan@gmail.com");
             table.Rows.Add("Irbaz", "Patel", "Bharuch", "Anywhere", "Gujrat", 654328, 6543210987, "irbaz@gmail.com");
-            table.Rows.Add("Niraj", "Pal", "lucknow", "Kanpur", "Delhi", 654354, 6543765098, "np@gmail.com");
+            table.Rows.Add("Niraj", "Pal", "Lucknow", "Kanpur", "Delhi", 654354, 6543765098, "np@gmail.com");
         }
         public void DisplayContacts()
         {
@@ -78,6 +78,23 @@ namespace AddressBook_LINQ
             var retrieveData = from records in table.AsEnumerable() where records.Field<string>("State") == state select records;
             Console.WriteLine("Retrieve contact details by State name ---->");
             foreach (DataRow row in retrieveData)
+            {
+                Console.WriteLine("FirstName :" + row["FirstName"]);
+                Console.WriteLine("LastName :" + row["LastName"]);
+                Console.WriteLine("Address :" + row["Address"]);
+                Console.WriteLine("City :" + row["City"]);
+                Console.WriteLine("State :" + row["State"]);
+                Console.WriteLine("Zip :" + row["Zip"]);
+                Console.WriteLine("PhoneNumber :" + row["PhoneNumber"]);
+                Console.WriteLine("Email :" + row["Email"]);
+                Console.WriteLine("-------------\n");
+            }
+        }
+        public void SortedContactsByNameForAgivenCity(string City)
+        {
+            Console.WriteLine("Sorting by name for City---->");
+            var retrievedData = from records in table.AsEnumerable() where records.Field<string>("City") == City orderby records.Field<string>("FirstName") select records;
+            foreach (var row in retrievedData)
             {
                 Console.WriteLine("FirstName :" + row["FirstName"]);
                 Console.WriteLine("LastName :" + row["LastName"]);
