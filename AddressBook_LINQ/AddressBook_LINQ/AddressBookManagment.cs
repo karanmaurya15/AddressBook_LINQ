@@ -56,5 +56,22 @@ namespace AddressBook_LINQ
             Console.WriteLine("\nRecord Successfully Deleted");
             DisplayContacts();
         }
+        public void RetrieveByCity(string city)
+        {
+            var retrieveData = from records in table.AsEnumerable() where records.Field<string>("City") == city  select records;
+            Console.WriteLine("Retrieve contact details by city name ---->");
+            foreach (DataRow row in retrieveData)
+            {
+                Console.WriteLine("FirstName :" + row["FirstName"]);
+                Console.WriteLine("LastName :" + row["LastName"]);
+                Console.WriteLine("Address :" + row["Address"]);
+                Console.WriteLine("City :" + row["City"]);
+                Console.WriteLine("State :" + row["State"]);
+                Console.WriteLine("Zip :" + row["Zip"]);
+                Console.WriteLine("PhoneNumber :" + row["PhoneNumber"]);
+                Console.WriteLine("Email :" + row["Email"]);
+                Console.WriteLine("-------------\n");
+            }
+        }
     }
 }
